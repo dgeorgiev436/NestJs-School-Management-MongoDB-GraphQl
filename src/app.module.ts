@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { LessonModule } from './lesson/lesson.module';
+import { LessonModule } from './lession/lesson.module';
 import {  ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo"
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Lesson } from './lesson/lesson.entity';
+import { Lesson } from './lession/lesson.entity';
+import { LessionService } from './lession/lession.service';
 
 
 @Module({
@@ -22,6 +23,7 @@ import { Lesson } from './lesson/lesson.entity';
       driver: ApolloDriver
     }),
     LessonModule
-  ]
+  ],
+  providers: [LessionService]
 })
 export class AppModule {}
