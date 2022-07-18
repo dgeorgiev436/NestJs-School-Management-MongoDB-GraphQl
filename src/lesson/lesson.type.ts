@@ -1,3 +1,5 @@
+// GraphQl schema
+
 import { Field, ID, ObjectType } from "@nestjs/graphql";
 
 
