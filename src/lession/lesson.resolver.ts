@@ -1,6 +1,7 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { LessonType } from './lesson.type';
 import { LessionService } from "./lession.service"
+import { CreateLessonInput } from "./lesson.input"
 
 @Resolver((of) => LessonType) // Decorating the class with the Resolver decorator makes it a resolver. First argument tells of what type is the resolver (what does it resolve)
 export class LessonResolver {
@@ -20,11 +21,7 @@ export class LessonResolver {
 	}
 
   @Mutation(returns => LessonType) // The Mutation decorator allows GraphQl to recognise this function as a mutation. First argument specifies the return type of the function.
- 	createLession(
-		@Args("name") name: string,
-		@Args("startDate") startDate: string,
-		@Args("endDate") endDate: string
-	){
-    	return this.lessonService.createLesson(name, startDate, endDate)
+ 	createLession(@Args("createLessonInput") createLessonInput: CreateLessonInput){
+    	return this.lessonService.createLesson(createLessonInput)
   }
 }
