@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { LessonType } from './lesson.type';
 import { LessonService } from "./lesson.service"
 
@@ -9,7 +9,7 @@ export class LessonResolver {
   // Mutations are used to create a new data or change existing data
 	
   	constructor(
-		private lessonService: LessonService 
+		private lessonService: LessonService  // Injet lessonService
  	){}
 
   @Query(returns => LessonType) // Query decorator export from @nestjs/graphql. First argument tells what type does the query returns
@@ -23,7 +23,11 @@ export class LessonResolver {
   }
 
   @Mutation(returns => LessonType) // The Mutation decorator allows GraphQl to recognise this function as a mutation. First argument specifies the return type of the function.
-  createLession(){
-    
+ 	createLession(
+		@Args("name") name: string,
+		@Args("startDate") startDate: string,
+		@Args("endDate") endDate: string
+	){
+    	lessonService.createLesson(name, startDate, endDate)
   }
 }
