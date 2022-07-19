@@ -9,6 +9,12 @@ export class LessionService {
   constructor(
     @InjectRepository(Lesson) private lessonRepository: Repository<Lesson>, // Injecting the TypeOrm Lesson repository
   ) {}
+	
+	async getLesson(id: string): Promise<Lesson> {
+		
+		return this.lessonRepository.findOne({ where: {id: id} });
+
+	}
 
   async createLesson(name, startDate, endDate): Promise<Lesson> {
 
