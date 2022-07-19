@@ -10,7 +10,7 @@ export class LessionService {
     @InjectRepository(Lesson) private lessonRepository: Repository<Lesson>, // Injecting the TypeOrm Lesson repository
   ) {}
 
-  async createLesson (name, startDate, endDate): Promise<Lesson> {
+  async createLesson(name, startDate, endDate): Promise<Lesson> {
 
     const lesson = this.lessonRepository.create({
         id: uuid(),
