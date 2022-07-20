@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Lesson } from './lession/lesson.entity';
 import { LessionService } from './lession/lession.service';
 import { StudentModule } from './student/student.module';
+import { Student } from "./student/student.entity"
 
 
 @Module({
@@ -16,7 +17,8 @@ import { StudentModule } from './student/student.module';
       synchronize: true,
       useUnifiedTopology: true,
       entities: [
-        Lesson // TypeOrm Schema Entity
+        Lesson, // TypeOrm Lesson Schema Entity
+		Student // TypeOrm Student Schema Entity
       ]
     }), // TypeOrm module
     GraphQLModule.forRoot<ApolloDriverConfig>({
