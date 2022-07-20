@@ -19,6 +19,11 @@ export class LessonResolver {
 	) {
 		return this.lessonService.getLesson(id);
 	}
+	
+	@Query(returns => [LessonType]) // Returns an array of LessonTypes
+	lessons() {
+		return this.lessonService.getLessons()
+	}
 
   @Mutation(returns => LessonType) // The Mutation decorator allows GraphQl to recognise this function as a mutation. First argument specifies the return type of the function.
  	createLession(@Args("createLessonInput") createLessonInput: CreateLessonInput){
