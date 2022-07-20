@@ -20,4 +20,10 @@ export class Lesson {
 
     @Column()
     endDate: string
+	
+	
+// 	Link Lesons with Students
+	@Column()
+	students: string[];
+	
 }

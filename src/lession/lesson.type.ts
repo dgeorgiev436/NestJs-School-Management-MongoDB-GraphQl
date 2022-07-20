@@ -1,6 +1,7 @@
 // GraphQl schema
 
 import { Field, ID, ObjectType } from "@nestjs/graphql";
+import { StudentType } from "../student/student.type"
 
 
 @ObjectType("Lesson") // Decorate as a object type to tell GraphQL that this is a type. The argument in the decorator changes the name of the type from LessonType to Lesson
@@ -17,4 +18,8 @@ export class LessonType {
 
     @Field()
     endDate: string;
+	
+// 	Linking Lessons with Students
+	@Field(type => [StudentType])
+	students: string[];
 }
