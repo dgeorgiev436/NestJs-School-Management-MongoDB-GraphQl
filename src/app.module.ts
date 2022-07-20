@@ -5,6 +5,7 @@ import {  ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo"
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Lesson } from './lession/lesson.entity';
 import { LessionService } from './lession/lession.service';
+import { StudentModule } from './student/student.module';
 
 
 @Module({
@@ -22,7 +23,8 @@ import { LessionService } from './lession/lession.service';
       autoSchemaFile: true, // In the code first approach, you use decorators and TypeScript classes to generate the corresponding GraphQL schema.
       driver: ApolloDriver
     }),
-    LessonModule
+    LessonModule,
+    StudentModule
   ],
   providers: [LessionService]
 })
