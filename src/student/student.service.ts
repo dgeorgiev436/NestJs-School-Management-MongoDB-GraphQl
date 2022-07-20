@@ -35,4 +35,15 @@ export class StudentService {
 		return this.studentRepository.save(student)	
 	}
 	
+	async getManyStudents(studentIds: string[]): Promise<Student[]> {
+// 		Get all students with the IDS provided in the array
+		return this.studentRepository.find({
+			where: {
+				id: {
+					$in: studentIds
+				}
+			}
+		})
+	}
+	
 }
